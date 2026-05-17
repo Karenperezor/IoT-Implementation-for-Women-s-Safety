@@ -1,4 +1,4 @@
-# IoT Implementation for Women's Safety
+# 🚨 IoT Implementation for Women's Safety
 ## Implementación del IoT para la Seguridad de las Mujeres
 
 **Tema 1: Estándares de Comunicación Inalámbrica**
@@ -6,16 +6,51 @@
 ![Badge](https://img.shields.io/badge/Status-Active-brightgreen)
 ![Badge](https://img.shields.io/badge/License-MIT-blue)
 ![Badge](https://img.shields.io/badge/Platform-Arduino%20IDE-orange)
+![Badge](https://img.shields.io/badge/Hardware-Heltec%20ESP32%20LoRa-blueviolet)
+![Badge](https://img.shields.io/badge/Protocol-LoRa%2BGPRS-orange)
+
+📍 **Repositorio GitHub:** [github.com/Karenperezor/Codigo-Integrador6](https://github.com/Karenperezor/Codigo-Integrador6)  
+🔓 **Estado:** Repositorio Público - Acceso abierto para replicación del proyecto
 
 ---
 
-## 📋 Introducción
+## Tabla de Contenidos
 
-Este proyecto implementa un **sistema IoT funcional basado en tecnologías inalámbricas de largo alcance y bajo consumo** para el monitoreo en tiempo real de signos vitales y geolocalización de mujeres en situación de vulnerabilidad. El prototipo opera mediante la integración de nodos sensores y gateways que transmiten datos biométricos desde una pulsera emisora inteligente hacia un servidor central de procesamiento y visualización.
+- [ Introducción](#introducción)
+- [ Justificación](#justificación)
+- [ Objetivos](#objetivos)
+- [ Requerimientos de Software y Hardware](#requerimientos-de-software-y-hardware)
+- [ Tabla de Conexiones](#tabla-de-conexiones)
+- [ Tabla de Direccionamiento](#tabla-de-direccionamiento)
+- [ Esquema de Funcionamiento](#esquema-de-funcionamiento)
+- [ Códigos Comentados](#códigos-comentados)
+  - [Nodo Emisor](#1-código-del-nodo-emisor-heltec-esp32-lora-v3)
+  - [Nodo Receptor](#2-código-del-nodo-receptor-heltec-esp32-lora-v3)
+  - [Gateway GPRS](#3-configuración-del-gateway-gprs-lilygo-t-sim7000)
+  - [Node-RED](#4-flujo-de-node-red-formato-json)
+- [ Configuraciones de Sensores](#configuración-de-sensores-y-tarjetas)
+- [ Alimentación](#alimentación-móvil-y-fija)
+- [ Recomendaciones y Precauciones](#recomendaciones-de-mejora-y-precauciones-de-uso)
+- [ Instalación Rápida](#instalación-y-configuración-rápida)
+- [ Autores](#estudiantes)
+- [ Bibliografía](#bibliografía)
+
+---
+
+## Introducción
+
+Este proyecto propone el desarrollo de un prototipo IoT de seguridad personal para mujeres en situación de riesgo en el municipio de Tlahuelilpan, Hidalgo. Ante la insuficiencia de las soluciones actuales que dependen del teléfono celular y fallan en momentos críticos se diseña un dispositivo wearable autónomo basado en comunicación LoRa que transmite alertas de emergencia y ubicación GPS en tiempo real al Instituto de la Mujer, sin depender de redes celulares ni WiFi. La solución integra sensores biométricos, geolocalización y una interfaz web de monitoreo, con el objetivo de reducir la revictimización y fortalecer el acompañamiento institucional.
+
+[⬆ Volver al índice](#tabla-de-contenidos)
 
 ### Contexto del Problema
 
-El proyecto aborda directamente la problemática de la **violencia de género en el municipio de Tlahuelilpan, Hidalgo**, donde el **70.1% de las mujeres de 15 años o más han experimentado al menos un incidente de violencia** según datos del INEGI. Esta solución se alinea con el **eje de Seguridad Humana de los PRONACES** (Programas Nacionales Estratégicos).
+A nivel nacional, el 70.1% de las mujeres de 15 años y más han experimentado al menos un incidente de violencia segun datos del (INEGI). En Tlahuelilpan, Hidalgo, las mujeres, especialmente amas de casa con dependencia económica, enfrentan una alta vulnerabilidad ante la violencia de género.
+
+Las soluciones actuales son insuficientes:
+Las apps móviles requieren smartphone con batería, datos y desbloqueo, imposibles de usar discretamente ante un agresor.
+Los botones de pánico tradicionales solo emiten alertas sonoras sin conexión real a redes de apoyo.
+
 
 ### Arquitectura de Comunicación Inalámbrica
 
@@ -32,7 +67,7 @@ A diferencia de otras soluciones de monitoreo continuo, este prototipo incorpora
 
 ---
 
-## 🎯 Justificación
+## Justificación
 
 ### Por qué este proyecto es necesario
 
@@ -49,9 +84,11 @@ A diferencia de otras soluciones de monitoreo continuo, este prototipo incorpora
 
 5. **Escalabilidad**: El diseño modular permite escalar la solución a otras instituciones y municipios con problemáticas similares.
 
+[⬆ Volver al índice](#tabla-de-contenidos)
+
 ---
 
-## 🎓 Objetivos
+## Objetivos
 
 ### Objetivo General
 
@@ -75,9 +112,11 @@ Transmitiendo los datos vía **LoRa y GPRS** al Instituto de la Mujer durante un
 
 5. **Estructurar una base de datos en InfluxDB** vinculada a Grafana para el registro histórico de signos vitales, aceleración y geolocalización.
 
+[⬆ Volver al índice](#tabla-de-contenidos)
+
 ---
 
-## ⚙️ Requerimientos de Software y Hardware
+## Requerimientos de Software y Hardware
 
 ### Hardware
 
@@ -141,9 +180,11 @@ Transmitiendo los datos vía **LoRa y GPRS** al Instituto de la Mujer durante un
 - Postman (pruebas de API)
 ```
 
+[⬆️ Volver al índice](#tabla-de-contenidos)
+
 ---
 
-## 📊 Tabla de Conexiones
+## Tabla de Conexiones
 
 ### Conexiones Eléctricas - Nodo Emisor (Heltec ESP32 LoRa v3)
 
@@ -267,7 +308,7 @@ El nodo receptor utiliza la **misma configuración que el emisor**, pero sin los
 
 ---
 
-## 📍 Tabla de Direccionamiento
+## Tabla de Direccionamiento
 
 ### Configuración de Redes Inalámbricas
 
@@ -331,7 +372,7 @@ El nodo receptor utiliza la **misma configuración que el emisor**, pero sin los
 
 ---
 
-## 🔄 Esquema de Funcionamiento
+## Esquema de Funcionamiento
 
 ### Flujo de Datos General
 
@@ -464,9 +505,11 @@ if (aceleracion_magnitude > 2g) {
 update_dashboard(BPM, SpO2, acceleration, GPS_location, alert_type);
 ```
 
+[⬆️ Volver al índice](#tabla-de-contenidos)
+
 ---
 
-## 💻 Códigos Comentados del Proyecto
+## Códigos Comentados del Proyecto
 
 ### 1. Código del Nodo Emisor (Heltec ESP32 LoRa v3)
 
@@ -1108,9 +1151,11 @@ void callback(char* topic, byte* message, unsigned int length) {
 }
 ```
 
+[⬆️ Volver al índice](#tabla-de-contenidos)
+
 ---
 
-## 🔧 Explicación de Configuraciones de Sensores y Tarjetas
+## Explicación de Configuraciones de Sensores y Tarjetas
 
 ### MAX30102 (Sensor Biométrico)
 
@@ -1344,7 +1389,7 @@ AT+CGNSINF                  // Información GPS (si está disponible)
 
 ---
 
-## ⚡ Explicación de Alimentación Móvil y Fija
+## Explicación de Alimentación Móvil y Fija
 
 ### Alimentación Móvil (Batería LiPo)
 
@@ -1427,7 +1472,7 @@ docker run -d -p 1880:1880 nodered/node-red
 
 ---
 
-## 🚀 Recomendaciones de Mejora y Precauciones de Uso
+## Recomendaciones de Mejora y Precauciones de Uso
 
 ### Mejoras Técnicas Identificadas
 
@@ -1511,7 +1556,7 @@ docker run -d -p 1880:1880 nodered/node-red
 
 ---
 
-## 📦 Instalación y Configuración Rápida
+## Instalación y Configuración Rápida
 
 ### Instalación del Firmware en Heltec
 
@@ -1571,16 +1616,63 @@ EOF
 docker-compose up -d
 ```
 
----
-
-## 📞 Contacto y Soporte
-
-**Empresa Desarrolladora**: Shero
-**Beneficiario Principal**: Instituto de la Mujer, Tlahuelilpan, Hidalgo
-
-Para reportar bugs o solicitar mejoras, crear un issue en este repositorio.
+[⬆ Volver al índice](#tabla-de-contenidos)
 
 ---
+
+## 👥 Estudiantes
+
+| Estudiante | Rol | Contribución |
+|-----------|-----|--------------|
+| **Melanie Santiago Resendiz** (230110616) | Líder Técnico | Diseño de hardware, sensores, PCB |
+| **Karen Pérez Ortiz** (230110326) | Desarrolladora LoRa/GPRS | Configuración de comunicaciones inalámbricas |
+| **Carol Mera Ibarra** (230110264) | Ingeniera de Datos | InfluxDB, Grafana, almacenamiento histórico |
+| **Andrea Jacob Salas** (230110449) | Desarrolladora Node-RED | Dashboard, lógica de alertas, interfaz |
+| **Freyra Wendy Martínez Martínez** (230110434) | Diseñadora de Carcasa | Fabricación 3D, ergonomía, discreción |
+
+**Institución**: Instituto Tecnológico Superior del Occidente del Estado de Hidalgo  
+**Grado y Grupo**: 6° "B"  
+**Materia**: Tecnologías Inalámbricas - Tema 1: Estándares de Comunicación Inalámbrica
+
+[⬆ Volver al índice](#tabla-de-contenidos)
+
+---
+
+## Bibliografía
+
+[1] S. Monk, Programming Arduino: Getting Started with Sketches, 2nd ed. New York, NY: McGraw-Hill Education, 2016.
+
+[2] R. Faludi, Building Wireless Sensor Networks, 1st ed. Sebastopol, CA: O'Reilly Media, 2010.
+
+[3] Telcel, "Especificaciones de red y configuración de APN para servicios GPRS en México," 2024. [En línea]. Disponible en: https://www.telcel.com/personas/servicios/telcel-internet/configuracion-internet
+
+[4] HiveMQ, "MQTT Essentials – A Lightweight IoT Protocol," 2023. [En línea]. Disponible en: https://www.hivemq.com/blog/mqtt-essentials/
+
+[5] Grafana Labs, "InfluxDB data source documentation," 2024. [En línea]. Disponible en: https://grafana.com/docs/grafana/latest/datasources/influxdb/
+
+[6] InfluxData, "InfluxDB documentation," 2023. [En línea]. Disponible en: https://docs.influxdata.com/influxdb/
+
+[7] Node-RED, "Node-RED documentation," 2024. [En línea]. Disponible en: https://nodered.org/docs/
+
+[8] Espressif Systems, ESP32 Technical Reference Manual, 2023. [En línea]. Disponible en: https://www.espressif.com
+
+[9] Semtech Corporation, "LoRa Modulation Basics," 2022. [En línea]. Disponible en: https://www.semtech.com/lora
+
+[10] Maxim Integrated, "MAX30102 Pulse Oximeter and Heart-Rate Sensor Datasheet," 2021. [En línea]. Disponible en: https://www.analog.com
+
+[11] InvenSense, "MPU-6050 Six-Axis Gyro and Accelerometer Datasheet," 2013. [En línea]. Disponible en: https://www.invensense.com
+
+[12] IEEE, "IEEE 11073-10406: Standard for Personal Health Device Communication - Device Specialization Pulse Oximeter," 2020. [En línea].
+
+[13] LoRa Alliance, "LoRaWAN Specification v1.1," 2020. [En línea]. Disponible en: https://lora-alliance.org/
+
+[14] MQTT.org, "MQTT Version 3.1.1," 2014. [En línea]. Disponible en: https://mqtt.org/mqtt-specification
+
+[⬆ Volver al índice](#tabla-de-contenidos)
+
+---
+
+**Proyecto Integrador - Tecnologías Inalámbricas**
 
 **Última actualización**: 2026-04-01
 **Versión**: 1.0.0
